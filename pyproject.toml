@@ -8,11 +8,13 @@ dependencies = [
     "numpy>=2.2.3",
     "packaging>=24.2",
     "pip>=25.0.1",
-    "torch>=2.6.0",
+    "torch==2.7.0",
+    "triton",
 ]
 
 [tool.uv.sources]
 torch = { index = "pytorch_cu126", marker = "platform_machine == 'aarch64'" }
+triton = { git = "https://github.com/triton-lang/triton", subdirectory = "python", rev = "96316ce50fade7e209553aba4898cd9b82aab83b" }
 
 [[tool.uv.index]]
 name = "pytorch_cu126"
