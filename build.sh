@@ -3,6 +3,7 @@
 set -e
 
 uv sync
+uv run python -c 'import torch; print(f"torch version: {torch.__version__}\ntorch cuda version: {torch.version.cuda}")'
 
 export FLASH_ATTENTION_FORCE_BUILD=TRUE
 export FLASH_ATTN_CUDA_ARCHS="80;90"
