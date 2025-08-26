@@ -10,7 +10,7 @@ export FLASH_ATTENTION_FORCE_BUILD=TRUE
 mkdir -p flash-attention/dist
 mkdir -p flash-attention/hopper/dist
 
-if [[ "$1" == "--flash-attn3" ]]; then
+if [[ "$1" == "--flash-attn-3" ]]; then
     rm -rf flash-attention/hopper/build/*
     # hopper compilation is extremely memory hungry, up to 22 GB per job (1 job = 1 thread)
     (cd flash-attention/hopper; uv run python setup.py sdist; MAX_JOBS=4 uv run python setup.py bdist_wheel)
