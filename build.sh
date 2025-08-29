@@ -14,7 +14,9 @@ if [[ "$1" == "--flash-attn-3" ]]; then
     rm -rf flash-attention/hopper/build/*
     # hopper compilation is extremely memory hungry, up to 22 GB per job (1 job = 1 thread)
     (
-        cd flash-attention/hopper;
+        # We use this fork: https://github.com/Dao-AILab/flash-attention/pull/1769
+        # This allows to avoid graph breaks in torch.compile()
+        cd flash-attention-guilhermeleobas/hopper;
         uv run python setup.py sdist;
         MAX_JOBS=4 FLASH_ATTENTION_DISABLE_SM80=TRUE FLASH_ATTENTION_DISABLE_FP16=TRUE FLASH_ATTENTION_DISABLE_FP8=TRUE uv run python setup.py bdist_wheel
     )
