@@ -18,7 +18,14 @@ if [[ "$1" == "--flash-attn-3" ]]; then
         # This allows to avoid graph breaks in torch.compile()
         cd flash-attention-guilhermeleobas/hopper;
         uv run python setup.py sdist;
-        MAX_JOBS=4 FLASH_ATTENTION_DISABLE_SM80=TRUE FLASH_ATTENTION_DISABLE_FP16=TRUE FLASH_ATTENTION_DISABLE_FP8=TRUE uv run python setup.py bdist_wheel
+        # We disable some configurations to save compile time.
+        MAX_JOBS=4 \
+            FLASH_ATTENTION_DISABLE_SM80=TRUE \
+            FLASH_ATTENTION_DISABLE_FP16=TRUE \
+            FLASH_ATTENTION_DISABLE_FP8=TRUE \
+            FLASH_ATTENTION_DISABLE_PAGEDKV=TRUE \
+            FLASH_ATTENTION_DISABLE_APPENDKV=TRUE \
+            uv run python setup.py bdist_wheel
     )
 else
     rm -rf flash-attention/build/*
