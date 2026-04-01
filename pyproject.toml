@@ -8,15 +8,9 @@ dependencies = [
     "numpy>=2.2.3",
     "packaging>=24.2",
     "pip>=25.0.1",
-    "torch==2.7.1", # must match triton commit below
+    "torch==2.11.0", # must match triton commit below
     "triton",
 ]
 
 [tool.uv.sources]
-torch = { index = "pytorch_cu128" }
-triton = { git = "https://github.com/triton-lang/triton", subdirectory = "python", rev = "d654e0f2d91f07496454e0fcbec2a9b97df37d47" }
-
-[[tool.uv.index]]
-name = "pytorch_cu128"
-url = "https://download.pytorch.org/whl/cu128"
-explicit = true
+triton = { git = "https://github.com/triton-lang/triton", rev = "9844da955a9db14ec69c9aac828ee9803085e288" }
