@@ -8,9 +8,15 @@ dependencies = [
     "numpy>=2.2.3",
     "packaging>=24.2",
     "pip>=25.0.1",
-    "torch==2.11.0", # must match triton commit below
+    "torch==2.13.0.dev20260520+cu130",
     "triton",
 ]
 
 [tool.uv.sources]
-triton = { git = "https://github.com/triton-lang/triton", rev = "9844da955a9db14ec69c9aac828ee9803085e288" }
+triton = { git = "https://github.com/triton-lang/triton", rev = "88b227e23f0445f3f695bad05bbf1a363b4f50e0" }
+torch = { index = "torch-nightly-cu130" }
+
+[[tool.uv.index]]
+name = "torch-nightly-cu130"
+url = "https://download.pytorch.org/whl/nightly/cu130"
+explicit = true
