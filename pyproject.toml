@@ -8,12 +8,12 @@ dependencies = [
     "numpy>=2.2.3",
     "packaging>=24.2",
     "pip>=25.0.1",
-    "torch==2.13.0.dev20260520+cu130",
+    "torch==2.14.0.dev20260618+cu130",
     "triton",
 ]
 
 [tool.uv.sources]
-triton = { git = "https://github.com/triton-lang/triton", rev = "88b227e23f0445f3f695bad05bbf1a363b4f50e0" }
+triton = { git = "https://github.com/triton-lang/triton", rev = "5d6048aa0a324e090ada215b609ea76620133845" }
 torch = { index = "torch-nightly-cu130" }
 
 [[tool.uv.index]]
